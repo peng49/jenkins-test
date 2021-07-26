@@ -1,0 +1,10 @@
+[Unit]
+Description=Jenkins Test Service
+
+[Service]
+ExecStart=java -jar /home/vagrant/jenkins-test-1.0.jar --server.port=8090
+
+[Install]
+WantedBy=multi-user.target
+
+

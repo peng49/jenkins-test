@@ -17,7 +17,8 @@ pipeline {
         stage('deploy') {
             steps {
                 sh 'cp ./target/jenkins-test-1.0.jar /home/vagrant/'
-                sh '''cd /home/vagrant && sh -c "nohup java -jar jenkins-test-1.0.jar --server.port=8090 > jenkins-test.log &"'''
+                sh 'sudo cp ./jenkins-test.service /usr/lib/systemd/system/jenkins-test.service'
+                sh '''cd /home/vagrant'''
             }
         }
     }
