@@ -1,6 +1,8 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent any
+    agent {
+        label 'dev-label'
+    }
     stages {
         stage('Build') {
             steps {
