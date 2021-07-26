@@ -4,15 +4,14 @@ pipeline {
         label 'dev-label'
     }
     stages {
-        stage('Build') {
-            steps {
-                sh 'echo "Hello World"'
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
-                sh 'pwd'
-            }
+        stage('test') {
+            sh 'mvn clean && mvn test'
+        }
+        stage('build') {
+            sh 'mvn package'
+        }
+        stage('deploy') {
+            sh 'cp ./target/jenkins-test-1.0.jar /home/vagrant/'
         }
     }
 }
