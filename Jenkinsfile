@@ -16,8 +16,11 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'cp ./target/jenkins-test-1.0.jar /home/vagrant/'
-                sh 'sudo cp ./jenkins-test.service /usr/lib/systemd/system/jenkins-test.service && sudo systemctl daemon-reload'
+                sh '''
+                        version=$(cat pom.xml | grep '<version>' | head -1 | awk '{gsub(/\\s*<\\/?version>\\s*/,""); print}')
+                        cp ./target/jenkins-test-${version}.jar /home/vagrant/jenkins-test.jar
+                        sudo cp ./jenkins-test.service /usr/lib/systemd/system/jenkins-test.service && sudo systemctl daemon-reload                                              
+                '''
                 sh '''sudo systemctl restart jenkins-test'''
             }
         }

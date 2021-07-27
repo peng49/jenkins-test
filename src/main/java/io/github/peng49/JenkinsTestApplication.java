@@ -11,7 +11,7 @@ public class JenkinsTestApplication {
 
     @RequestMapping("/hello")
     public String index(){
-        return "Hello Jenkins!";
+        return "Hello Jenkins! v1.0.1";
     }
 
     public static void main(String[] args) {
