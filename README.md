@@ -12,13 +12,14 @@ mvn package
 > java -jar target/jenkins-test-1.0.1.jar
 
 
-#### jenkins 用户sudo设置
+### jenkins 用户sudo设置
+在 /etc/sudoers.d/ 目录下创建jenkins文件
 ```vim
-# 在 /etc/sudoers.d/ 目录下创建jenkins文件
 sudo visudo -f /etc/sudoers.d/jenkins
-
-# 在文件中加入如下内容
-jenkins ALL=(ALL) NOPASSWD:ALL
-
-# wq 保存退出
 ```
+
+在文件中加入如下内容
+```
+jenkins ALL=(ALL) NOPASSWD:ALL
+```
+wq 保存退出
