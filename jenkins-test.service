@@ -2,7 +2,7 @@
 Description=Jenkins Test Service
 
 [Service]
-ExecStart=/usr/bin/java -jar /home/vagrant/jenkins-test.jar --server.port=8090
+ExecStart=/usr/bin/java -jar /var/www/jenkins-test.jar --server.port=8090
 
 [Install]
 WantedBy=multi-user.target

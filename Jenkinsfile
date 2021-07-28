@@ -1,8 +1,8 @@
 #!/usr/bin/env groovy
+import sun.util.resources.cldr.nyn.CalendarData_nyn_UG
+
 pipeline {
-    agent {
-        label 'dev-label'
-    }
+    agent any
     stages {
         stage('test') {
             steps {
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh '''
                         version=$(cat pom.xml | grep '<version>' | head -1 | awk '{gsub(/\\s*<\\/?version>\\s*/,""); print}')
-                        cp ./target/jenkins-test-${version}.jar /home/vagrant/jenkins-test.jar
+                        cp ./target/jenkins-test-${version}.jar /var/www/jenkins-test.jar
                         sudo cp ./jenkins-test.service /usr/lib/systemd/system/jenkins-test.service && sudo systemctl daemon-reload                                              
                 '''
                 sh '''sudo systemctl restart jenkins-test'''
